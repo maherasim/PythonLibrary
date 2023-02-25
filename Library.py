@@ -24,6 +24,16 @@ def remove_book():
     else:
         print("The book was not found in the library.")
 
+def search_book():
+    """Search for a book in the library"""
+    isbn = input("Enter the book's ISBN to search: ")
+    if isbn in library:
+        print("Book details:")
+        for key, value in library[isbn].items():
+            print(f"{key.capitalize()}: {value}")
+    else:
+        print("The book was not found in the library.")
+        
 
 def show_books():
     """Shows the list of books in the library"""
@@ -40,7 +50,8 @@ while True:
     print("1. Show books in the library")
     print("2. Add a new book to the library")
     print("3. Remove Books from library")
-    print("4. Quit")
+    print("4. Search Books from library")
+    print("5. Quit")
     choice = input("> ")
     
     if choice == "1":
@@ -57,6 +68,8 @@ while True:
     elif choice == "3":
         remove_book()
     elif choice == "4":
+        search_book()
+    elif choice == "5":
         break
     else:
         print("Invalid choice. Please try again.")
