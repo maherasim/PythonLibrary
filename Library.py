@@ -40,7 +40,6 @@ while True:
     print("1. Show books in the library")
     print("2. Add a new book to the library")
     print("3. Remove Books from library")
-
     print("4. Quit")
     choice = input("> ")
     
@@ -56,7 +55,8 @@ while True:
        
         add_book(isbn, title, author, publisher, publication_date)
     elif choice == "3":
-        print("Goodbye!")
+        remove_book()
+    elif choice == "4":
         break
     else:
         print("Invalid choice. Please try again.")
