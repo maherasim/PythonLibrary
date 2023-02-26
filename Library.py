@@ -10,9 +10,9 @@ def add_book():
         author = input("Enter the book's author: ")
         publisher = input("Enter the book's publisher: ")
         pub_date = input("Enter the book's publication date (YYYY-MM-DD): ")
-
+        pages = int(input("Enter the book's number of pages: "))
         library[isbn] = {"title": title, "author": author, "publisher": publisher, 
-                         "publication date": pub_date}
+                         "publication date": pub_date, "pages": pages, "checked out": False}
         print("The book has been added to the library.")
 
 def remove_book():
@@ -34,30 +34,6 @@ def search_book():
     else:
         print("The book was not found in the library.")
 
-def check_out():
-    """Check out a book from the library"""
-    isbn = input("Enter the book's ISBN to check out: ")
-    if isbn in library:
-        if library[isbn]["status"] == "available":
-            library[isbn]["status"] = "checked out"
-            print("The book has been checked out.")
-        else:
-            print("The book is already checked out.")
-    else:
-        print("The book was not found in the library.")
-
-def check_in():
-    """Check in a book to the library"""
-    isbn = input("Enter the book's ISBN to check in: ")
-    if isbn in library:
-        if library[isbn]["status"] == "checked out":
-            library[isbn]["status"] = "available"
-            print("The book has been checked in.")
-        else:
-            print("The book is already available.")
-    else:
-        print("The book was not found in the library.")
-
 def display_books():
     """Display all books in the library"""
     if library:
@@ -70,6 +46,30 @@ def display_books():
     else:
         print("The library is empty.")
 
+def check_out():
+    """Check out a book from the library"""
+    isbn = input("Enter the book's ISBN to check out: ")
+    if isbn in library:
+        if library[isbn]['checked out']:
+            print("The book is already checked out.")
+        else:
+            library[isbn]['checked out'] = True
+            print("The book has been checked out.")
+    else:
+        print("The book was not found in the library.")
+
+def check_in():
+    """Check in a book to the library"""
+    isbn = input("Enter the book's ISBN to check in: ")
+    if isbn in library:
+        if library[isbn]['checked out']:
+            library[isbn]['checked out'] = False
+            print("The book has been checked in.")
+        else:
+            print("The book is not checked out.")
+    else:
+        print("The book was not found in the library.")
+
 def main():
     """Main program loop"""
     while True:
@@ -81,7 +81,7 @@ def main():
         print("5. Check out a book")
         print("6. Check in a book")
         print("7. Quit")
-        choice = input("Enter your choice (1-5): ")
+        choice = input("Enter your choice (1-7): ")
         if choice == "1":
             add_book()
         elif choice == "2":
@@ -91,7 +91,7 @@ def main():
         elif choice == "4":
             display_books()
         elif choice == "5":
-          check_out()
+            check_out()
         elif choice == "6":
             check_in()
         elif choice == "7":
@@ -101,3 +101,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
