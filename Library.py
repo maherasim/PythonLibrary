@@ -10,7 +10,7 @@ def add_book():
         author = input("Enter the book's author: ")
         publisher = input("Enter the book's publisher: ")
         pub_date = input("Enter the book's publication date (YYYY-MM-DD): ")
-       
+
         library[isbn] = {"title": title, "author": author, "publisher": publisher, 
                          "publication date": pub_date}
         print("The book has been added to the library.")
