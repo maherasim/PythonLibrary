@@ -34,6 +34,30 @@ def search_book():
     else:
         print("The book was not found in the library.")
 
+def check_out():
+    """Check out a book from the library"""
+    isbn = input("Enter the book's ISBN to check out: ")
+    if isbn in library:
+        if library[isbn]["status"] == "available":
+            library[isbn]["status"] = "checked out"
+            print("The book has been checked out.")
+        else:
+            print("The book is already checked out.")
+    else:
+        print("The book was not found in the library.")
+
+def check_in():
+    """Check in a book to the library"""
+    isbn = input("Enter the book's ISBN to check in: ")
+    if isbn in library:
+        if library[isbn]["status"] == "checked out":
+            library[isbn]["status"] = "available"
+            print("The book has been checked in.")
+        else:
+            print("The book is already available.")
+    else:
+        print("The book was not found in the library.")
+
 def display_books():
     """Display all books in the library"""
     if library:
@@ -54,7 +78,9 @@ def main():
         print("2. Remove book")
         print("3. Search book")
         print("4. Display all books")
-        print("5. Quit")
+        print("5. Check out a book")
+        print("6. Check in a book")
+        print("7. Quit")
         choice = input("Enter your choice (1-5): ")
         if choice == "1":
             add_book()
@@ -65,6 +91,10 @@ def main():
         elif choice == "4":
             display_books()
         elif choice == "5":
+          check_out()
+        elif choice == "6":
+            check_in()
+        elif choice == "7":
             break
         else:
             print("Invalid choice!")
