@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+
+# Test coverage data
+.coverage
+
+# pytest cache
+.pytest_cache/
+
+# tox virtual environments
+.tox/
+
+# Visual Studio Code directory
+.vscode/
+
+# PyCharm directory
+.idea/
+
+# Secret files
+emailmsg.py
