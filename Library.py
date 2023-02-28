@@ -1,19 +1,21 @@
 library = {}
 
 def add_book():
-    """Add a book to the library"""
+    """Add a book (or multiple copies) to the library"""
     isbn = input("Enter the book's ISBN: ")
     if isbn in library:
         print("The book already exists in the library!")
-    else:
-        title = input("Enter the book's title: ")
-        author = input("Enter the book's author: ")
-        publisher = input("Enter the book's publisher: ")
-        pub_date = input("Enter the book's publication date (YYYY-MM-DD): ")
-        pages = int(input("Enter the book's number of pages: "))
-        library[isbn] = {"title": title, "author": author, "publisher": publisher, 
-                         "publication date": pub_date, "pages": pages, "checked out": False}
-        print("The book has been added to the library.")
+        return
+    title = input("Enter the book's title: ")
+    author = input("Enter the book's author: ")
+    publisher = input("Enter the book's publisher: ")
+    pub_date = input("Enter the book's publication date (YYYY-MM-DD): ")
+    
+    num_copies = int(input("Enter the number of copies to add: "))
+    for i in range(num_copies):
+        library[f"{isbn}_{i+1}"] = {"title": title, "author": author, "publisher": publisher, 
+                                    "publication date": pub_date, "checked out": False}
+    print(f"{num_copies} copies of the book have been added to the library.")
 
 def remove_book():
     """Remove a book from the library"""
