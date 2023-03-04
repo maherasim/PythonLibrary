@@ -1,15 +1,26 @@
+import json
 import smtplib
+from email.message import EmailMessage
 
-sender = "asimriazasim107@gmail.com"
-receiver = "sohailriazveh107@gmail.com"
+# Loading the secret data from  secret.json file
+with open('secret.json') as f:
+    secret_data = json.load(f)
 
-message = f"""\
-Subject: Hi Mailtrap
-To: {receiver}
-From: {sender}
 
-This is test to cheack notification through email in python code."""
+smtp_server = secret_data['smtp_server']
+smtp_port = secret_data['smtp_port']
+smtp_username = secret_data['smtp_username']
+smtp_password = secret_data['smtp_password']
+receiver = secret_data['receiver']
 
-with smtplib.SMTP("sandbox.smtp.mailtrap.io", 2525) as server:
-    server.login("ce267c3937b1b7", "ad85f44f11bcfb")
-    server.sendmail(sender, receiver, message)
+# Create the  message
+msg = EmailMessage()
+msg['Subject'] = 'Hi smtplib'
+msg['From'] = smtp_username
+msg['To'] = receiver
+msg.set_content('This is a test email for python Library.')
+
+
+with smtplib.SMTP(smtp_server, smtp_port) as server:
+    server.login(smtp_username, smtp_password)
+    server.send_message(msg)
