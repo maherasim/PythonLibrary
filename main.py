@@ -8,7 +8,7 @@ library.display_books()
 library.check_out()
 library.check_in()
 
-
+#Menu
 while True:
     print("Enter a command: ")
     print("1 - Add a book")
