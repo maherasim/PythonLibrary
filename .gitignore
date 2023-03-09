@@ -21,3 +21,7 @@ __pycache__/
 # Secret files
 emailmsg.py
 Secret.json
+<<<<<<< HEAD
+=======
+
+>>>>>>> 45e47b1bf600760fbb47cf407815f2c8360c5ed4
